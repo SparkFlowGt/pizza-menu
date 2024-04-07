@@ -39,7 +39,7 @@ const pizzaData = [
     soldOut: true,
   },
   {
-    name: "Pizza Prosciutto",
+    name: "Pizza Funghi",
     ingredients: "Tomato, mozarella, ham, aragula, and burrata cheese",
     price: 18,
     photoName: "pizzas/prosciutto.jpg",
@@ -57,28 +57,55 @@ function App() {
   );
 }
 
-function Pizza() {
+function Pizza(props) {
   return (
-    <div>
-      <img src="pizzas/salamino.jpg" alt="pizza salamino" />
-      <h2>Pizza Salamino</h2>
-      <p>Tomato, mozarella, and pepperoni</p>;
+    <div className="pizza">
+      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
+      <div>
+        <h3>{props.pizzaObj.name}</h3>
+        <p>{props.pizzaObj.ingredients}</p>;
+        <span>{props.pizzaObj.price + 1}</span>
+      </div>
     </div>
   );
 }
 
 function Header() {
-  return <h1 style={{ color: "red", fontSiz: "48px" }}>React Pizza Rapid</h1>;
+  return (
+    <header className="header">
+      <h1>React Pizza Rapid</h1>;
+    </header>
+  );
 }
 
 function Menu() {
   return (
-    <div>
+    <main className="menu">
       <h2>Our Menu</h2>
-      <Pizza />
-      <Pizza />
-      <Pizza />
-    </div>
+      <div>
+        {pizzaData.map((pizza) => (
+          <Pizza pizzaObj={pizza} />
+        ))}
+      </div>
+      {/* <Pizza
+        name="Pizza Salamino"
+        ingredients="Tomato, mozarella, and pepperoni"
+        photoName="pizzas/salamino.jpg"
+        price={11}
+      />
+      <Pizza
+        name="Pizza Prosciutto"
+        ingredients="Tomato, mozarella, ham, aragula, and burrata cheese"
+        photoName="pizzas/prosciutto.jpg"
+        price={10}
+      />
+      <Pizza
+        name="Pizza Funghi"
+        ingredients="Tomato, mozarella, mushrooms, and onion"
+        photoName="pizzas/funghi.jpg"
+        price={15}
+      /> */}
+    </main>
   );
 }
 
@@ -93,7 +120,9 @@ function Footer() {
   // else alert("Sorry we close ");
 
   return (
-    <footer>{new Date().toLocaleDateString()} We're currently open!</footer>
+    <footer className="footer">
+      {new Date().toLocaleDateString()} We're currently open!
+    </footer>
   );
   // return React.createElement("footer", null, "We're currently open!");
 }
