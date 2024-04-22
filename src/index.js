@@ -152,6 +152,8 @@ function Footer() {
       )}
     </footer>
   );
+
+  // return React.createElement("footer", null, "We're currently open!");
 }
 
 function Order({ closeHour, openHour }) {
