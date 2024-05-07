@@ -54,6 +54,8 @@ function App() {
       <Menu />
       <Footer />
     </div>
+    <>
+    </>
   );
 }
 
